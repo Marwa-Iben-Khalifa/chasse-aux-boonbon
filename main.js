@@ -1,6 +1,10 @@
 let tab=[["bonbon1", 150], ["bonbon2", 100], ["bonbon3", 150], ["bonbon4", 100], ["bonbon5", 150], ["bonbon6", 200], ["bonbon7", 150], ["bonbon8", 100], ["bonbon9", 150], ["lait",20], ["viande", 15], ["bomb2", -250], ["bomb1", -250], ["gift", 1000]];
 let score=0;
 let tabScore=[];
+var mainSong = new Audio("../sons/son2.mp3");
+mainSong.loop = true;
+mainSong.volume = 0.1;
+
 const $startGame= document.querySelector('button');
 function rand(from, to) {
   // TODO: Iteration 1
@@ -19,7 +23,7 @@ function draw(){
   const $div = document.createElement('div')
   $div.className = `bonbon ${friandise[0]}`
   console.log(friandise[0]);
-  $div.style.left = `${rand(290, window.innerWidth - 400)}px`
+  $div.style.left = `${rand(100, window.innerWidth - 160)}px`
     // inject it into body
   $bar.appendChild($div);
     
@@ -58,6 +62,8 @@ function anim(interval, j){
 
 $startGame.onclick= function(){ 
     if($startGame.innerText==="Start Game"){
+        mainSong.load();
+        mainSong.play();
         $startGame.innerText= "Stop Game";
         $startGame.className= 'stop';
         score=0;
@@ -67,6 +73,7 @@ $startGame.onclick= function(){
         anim(1000-(j*10))
     }
     else {
+        mainSong.pause();
         $startGame.innerText = "Start Game";
         $startGame.className= 'start';
         erase();

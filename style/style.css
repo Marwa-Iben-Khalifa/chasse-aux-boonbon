@@ -1,6 +1,7 @@
 body{
     background-color: #cce6ff;
 }
+
 @keyframes rain {
     0% {transform:translateY(0px);}
     80%{ width:60px;
@@ -34,9 +35,9 @@ button {
     margin:auto;
   }
 #game {
-    background-image: url("../images/fond.jpg");
-    height: 569px;
-    width: 831px;
+    background-image: url("../images/fond1.png");
+    height: 599px;
+    width: 1065px;
     margin-left: auto;
     margin-right: auto;
     background-size: cover;
