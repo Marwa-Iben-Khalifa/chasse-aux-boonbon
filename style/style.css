@@ -18,11 +18,15 @@ header {
     font-family: Luminari, fantasy;
     color: rgb(233, 148, 162);
 }
-
+.start{
+    background-color: rgb(233, 131, 148);
+}
+.stop{
+    background-color: rgb(182, 34, 91);
+}
 button {
-    font-size: 30px;
-    background-color: pink;
     color: #fff;
+    font-size: 30px;
     padding: 20px 40px;
     border: 0;
     border-radius: 5px;

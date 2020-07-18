@@ -55,12 +55,20 @@ function anim(interval, j){
         }
     }, interval)
 }
-// const status= document.querySelector('#start-game').innerHTML;
 
 $startGame.onclick= function(){ 
-    // console.log($status);
-    score=0;
-    j=0;
-    i=1;
-    anim(1000-(j*10))
+    if($startGame.innerText==="Start Game"){
+        $startGame.innerText= "Stop Game";
+        $startGame.className= 'stop';
+        score=0;
+        updateScore(score)
+        j=0;
+        i=1;
+        anim(1000-(j*10))
+    }
+    else {
+        $startGame.innerText = "Start Game";
+        $startGame.className= 'start';
+        erase();
+    }  
 }
