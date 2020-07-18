@@ -1,0 +1,126 @@
+body{
+    background-color: #cce6ff;
+}
+@keyframes rain {
+    0% {transform:translateY(0px);}
+    80%{ width:60px;
+         height:60px}
+    90%{height:0%;  
+        width:0%}
+    100% {transform:translateY(535px);
+        height:0%;  
+        width:0%
+        }
+    
+}
+header {
+    text-align: center;
+    font-family: Luminari, fantasy;
+    color: rgb(233, 148, 162);
+}
+
+button {
+    font-size: 30px;
+    background-color: pink;
+    color: #fff;
+    padding: 20px 40px;
+    border: 0;
+    border-radius: 5px;
+    display: block;
+    margin:auto;
+  }
+#game {
+    background-image: url("../images/fond.jpg");
+    height: 569px;
+    width: 831px;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: cover;
+}
+#score h2{
+    text-align: center;
+}
+.bonbon1 {
+    background-image: url("../images/bonbon1.png");
+    animation:rain 8s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon2 {
+    background-image: url("../images/bonbon2.png");
+    animation:rain 5s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon3 {
+    background-image: url("../images/bonbon3.png");
+    animation:rain 6s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon4 {
+    background-image: url("../images/bonbon4.png");
+    animation:rain 4s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon5 {
+    background-image: url("../images/bonbon5.png");
+    animation:rain 8s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon6 {
+    background-image: url("../images/bonbon6.png");
+    animation:rain 4s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon7 {
+    background-image: url("../images/bonbon7.png");
+    animation:rain 5s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon8 {
+    background-image: url("../images/bonbon8.png");
+    animation:rain 6s ;
+    animation-fill-mode:forwards; 
+}
+.bonbon9 {
+    background-image: url("../images/bonbon9.png");
+    animation:rain 8s ;
+    animation-fill-mode:forwards; 
+}
+.lait {
+    background-image: url("../images/lait.png");
+    animation:rain 6s ;
+    animation-fill-mode:forwards; 
+}
+.viande{
+    background-image: url("../images/viande.png"); 
+    animation:rain 3s ;
+    animation-fill-mode:forwards;
+}
+
+.bomb1 {
+    background-image: url("../images/bomb1.png");
+    animation:rain 5s ;
+    animation-fill-mode:forwards; 
+}
+.bomb2 {
+    background-image: url("../images/bomb2.png");
+    animation:rain 6s ;
+    animation-fill-mode:forwards; 
+}
+.gift {
+    background-image: url("../images/gift.png");
+    animation:rain 4s ;
+    animation-fill-mode:forwards;
+}
+.bonbon{
+    height: 60px;
+    width: 60px; 
+    position:absolute;
+    /* animation:rain 6s ;
+    animation-fill-mode:forwards; */
+  }
+#score {
+    font-size:300%; 
+    position:relative;
+    z-index:999; 
+    pointer-events:none;
+}
