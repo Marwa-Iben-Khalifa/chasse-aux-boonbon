@@ -1,7 +1,12 @@
 body{
     background-color: #cce6ff;
 }
-
+#acceuil{
+    display: block;
+}
+#jeux{
+    display: none;
+}
 @keyframes rain {
     0% {transform:translateY(0px);}
     80%{ width:60px;
@@ -13,6 +18,9 @@ body{
         width:0%
         }
     
+}
+#resultat span{
+    font-size: 300%;
 }
 header {
     text-align: center;
@@ -41,6 +49,20 @@ button {
     margin-left: auto;
     margin-right: auto;
     background-size: cover;
+}
+#resultat{
+    display: none;
+    text-align: center;
+    height: 150px;
+    width: 400px;
+    background-color: aliceblue ;
+    opacity: 50%;
+    position: relative;
+    margin: auto;
+    padding-top: 50px;
+}
+#resultat p{
+    font-weight: bold;
 }
 #score h2{
     text-align: center;
@@ -120,12 +142,51 @@ button {
     height: 60px;
     width: 60px; 
     position:absolute;
-    /* animation:rain 6s ;
-    animation-fill-mode:forwards; */
   }
 #score {
     font-size:300%; 
     position:relative;
     z-index:999; 
     pointer-events:none;
+}
+.informations{
+    
+    width: 800px;
+    margin: auto;
+    border: 5px;
+    border-radius: 5%;
+    box-shadow: inset 0 0 1em rgb(160, 178, 190), 0 0 2em rgb(247, 138, 188);
+  }
+h3{
+    font-size: 180%;
+    color: rgb(207, 24, 94);
+    text-align: center;
+    padding-top: 20px;
+}
+p{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    color: rgb(58, 21, 50);
+}
+#ps{
+    opacity: 40%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+    margin-top: 6px;
+}
+.part1 {
+    display: flex;
+    height: 130px;
+    width: 700px;
+    flex-direction: row;
+    align-content: space-around;
+    margin: auto;
+}
+.part1 p{
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: rgb(209, 47, 101);
 }

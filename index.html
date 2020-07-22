@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/style/style.css">
+        <link rel="stylesheet" href="./style/style.css">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" >
         <title>Candy Bar</title>
 
     </head>
@@ -11,9 +11,42 @@
         <header>
             <h1>CANDY BAR</h1>
         </header>
-        <button class="start">Start Game</button>
-        <div id="score"><span>0</span> pts</div>
-        <div id="game"></div>
+
+        <button class="start">TRY ME</button>
+        <section id="acceuil">
+            <div class="informations">
+                <h3>How To Play?</h3>
+                <p>You have 1 minute to hunt the maximum amount of candy!</p>
+                <p id="ps">ps: Beware of traps!!!</p>
+                <div class="part1">
+                    <p><img src="./images/bonbon1.png" alt=""><span>150 points</span></p>
+                    <p><img src="./images/bonbon2.png" alt=""><span>100 points</span></p>
+                    <p><img src="./images/bonbon3.png" alt=""><span>150 points</span></p>
+                    <p><img src="./images/bonbon4.png" alt=""><span>100 points</span></p>
+                    <p><img src="./images/bonbon5.png" alt=""><span>150 points</span></p>
+                    <p><img src="./images/bonbon6.png" alt=""><span>200 points</span></p>
+                    <p><img src="./images/bonbon7.png" alt=""><span>150 points</span></p>
+                </div>
+                <div class="part1">
+                    <p><img src="./images/bonbon8.png" alt=""><span>100 points</span></p>
+                    <p><img src="./images/bonbon9.png" alt=""><span>150 points</span></p>
+                    <p><img src="./images/gift.png" alt=""><span>1000 points</span></p>
+                    <p><img src="./images/lait.png" alt=""><span>20 points</span></p>
+                    <p><img src="./images/viande.png" alt=""><span>15 points</span></p>
+                    <p><img src="./images/bomb1.png" alt=""><span>-250 points</span></p>
+                    <p><img src="./images/bomb2.png" alt=""><span>-250 points</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="jeux">
+            <div id="score"><span>0</span> pts</div>
+            <div id="game">
+                <div id="resultat">
+                    <p>WINNER N:</p><span></span>
+                </div>
+            </div>
+        </section>
         <script src="main.js"></script>
     </body>
 </html>
