@@ -7,8 +7,38 @@ mainSong.volume = 0.1;
 let $section1 = document.getElementById('acceuil');
 let $section2 = document.getElementById('jeux');
 let $resultat= document.querySelector('#resultat');
-let conterDraw=0;
-let counterBind=0;
+//  creation d'un chronometre
+
+const chronometer = new Chronometer()
+// get the DOM elements that will serve us to display the time:
+
+let $secDec = document.getElementById('secDec');
+let $secUni = document.getElementById('secUni');
+let $milDec = document.getElementById('milDec');
+let $milUni = document.getElementById('milUni');
+
+function printTime() {
+  printMilliseconds();
+  printSeconds()
+}
+
+
+function printSeconds() {
+  let second = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  $secDec.innerHTML = second[0]
+  $secUni.innerHTML = second[1]
+  // return `${this.$secDec}${this.secUni}`
+
+}
+
+// ==> BONUS
+function printMilliseconds() {
+  // ... your code goes here
+  let milSec = chronometer.twoDigitsNumber(chronometer.getMilliSecend());
+  $milDec.innerHTML = milSec[0]
+  $milUni.innerHTML = milSec[1]
+}
+
 const $startGame= document.querySelector('button');
 
 //   Tri de tableau contenant les scores
@@ -93,15 +123,18 @@ let int;
 //     à 60 secondes:
 function anim(interval, j){
   int= setInterval(function () {
-    i++;
-    if (i >= 60){
+    let j= chronometer.getSeconds();
+    if (j === 60 ){
+      console.log(` nombre des secondes :${chronometer.getSeconds}`)
+      chronometer.stopClick();
       erase();
       mainSong.pause();
       $startGame.innerText = "Start Game";
       $startGame.className= 'start';
+      chronometer.resetClick();
     }
     else {
-      for (j=0; j< i/10 ; j++){
+      for (let i=0; i< j/5 ; i++){
           draw()
       }
     }
@@ -123,11 +156,12 @@ $startGame.addEventListener("click", () => {
     $startGame.innerText= "Stop Game";
     $startGame.className= 'stop';
     score=0;
-    updateScore(score)
-    j=0;
-    i=1;
-    anim(1000)
+    updateScore(score);
+    chronometer.startClick(printTime);
+    anim(1000, j)
   }else {
+    chronometer.stopClick();
+    chronometer.resetClick();
     mainSong.pause();
     erase();
     $startGame.innerText = "Start Game";
