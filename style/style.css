@@ -1,19 +1,62 @@
-body{
-    background-color: #cce6ff;
+
+html,body {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+}
+/* Pen-specific styles here */
+
+canvas {
+	display: block;
+	width: 1280px;
+    height: 1000px;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    pointer-events: none;
+    background-image: url(../images/sky.png);
+    background-size: cover;
 }
 #acceuil{
     display: block;
+}
+#sound{
+    display: block;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 600px;
+    right: 30px;
+}
+.soundOn{
+    background-image: url("../images/soundOn.png");    
+}
+.soundOff{
+    background-image: url("../images/soundOff.png");    
 }
 #jeux{
     display: none;
 }
 @keyframes rain {
     0% {transform:translateY(0px);}
-    80%{ width:60px;
-         height:60px}
-    95%{height:0%;  
-        width:0%}
-    100% {transform:translateY(535px);
+    10%{transform: rotate(180deg); 
+        }
+    80%{
+        width:40px;
+         height:40px
+    }
+    100%{transform:translateY(430px);
+        /* visibility: hidden; */
+        transition: visibility 0s 1s, opacity 3s linear;
+        opacity: 70%;
         height:0%;  
         width:0%
         }
@@ -26,6 +69,9 @@ header {
     text-align: center;
     font-family: Luminari, fantasy;
     color: rgb(233, 148, 162);
+    font-size: 150%;
+    text-shadow: 4px 3px 0px #7A7A7A;
+    margin-bottom: 0em;
 }
 .start{
     background-color: rgb(233, 131, 148);
@@ -36,19 +82,25 @@ header {
 button {
     color: #fff;
     font-size: 30px;
-    padding: 20px 40px;
+    padding: 10px 20px;
     border: 0;
     border-radius: 5px;
     display: block;
-    margin:auto;
-  }
-#game {
-    background-image: url("../images/fond1.png");
-    height: 599px;
-    width: 1065px;
     margin-left: auto;
     margin-right: auto;
-    background-size: cover;
+    margin-bottom: 15px;
+  }
+#game {
+    border: 5px;
+    border-radius: 5%;
+    box-shadow: inset 0 0 1em rgb(160, 178, 190), 0 0 2em rgb(247, 138, 188);
+    background-image: url("../images/fond1.png");
+    /* background-color: rgb(245, 225, 225); */
+    height: 460px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 #resultat{
     display: none;
@@ -67,6 +119,12 @@ button {
 #score h2{
     text-align: center;
 }
+.boom{
+    background-image: url("../images/boom.png");
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
 .bonbon1 {
     background-image: url("../images/bonbon1.png");
     animation:rain 8s ;
@@ -90,7 +148,7 @@ button {
 .bonbon5 {
     background-image: url("../images/bonbon5.png");
     animation:rain 8s ;
-    animation-fill-mode:forwards; 
+    animation-fill-mode:forwards;
 }
 .bonbon6 {
     background-image: url("../images/bonbon6.png");
@@ -139,20 +197,24 @@ button {
     animation-fill-mode:forwards;
 }
 .bonbon{
-    height: 60px;
-    width: 60px; 
+    height: 40px;
+    width: 40px; 
     position:absolute;
   }
 #score {
+    color: rgb(71, 36, 75);
     font-size:300%; 
-    position:relative;
+    position: absolute;
     z-index: 3; 
     pointer-events:none;
+    top: 130px;
+    right: 1020px;
 }
 .informations{
     
     width: 800px;
     margin: auto;
+    margin-top: 20px;
     border: 5px;
     border-radius: 5%;
     box-shadow: inset 0 0 1em rgb(160, 178, 190), 0 0 2em rgb(247, 138, 188);
@@ -191,7 +253,6 @@ p{
     color: rgb(209, 47, 101);
 }
 #sphere {
-    border: 2px solid rgb(100, 34, 75);
     border-radius: 20px;
     box-sizing: border-box;
     font-size: 60px;
@@ -199,7 +260,9 @@ p{
     height: 80px;
     margin: auto;
     margin-top: 20px;
-    position: relative;
+    position: absolute;
+    top: 520px;
+    right: 0px;
     text-align: center;
     width: 230px;
 }
@@ -212,14 +275,3 @@ p{
   font-weight: lighter;
   font-size: smaller;
 }
-/* .btn {
-    border: 0;
-    border-radius: 100%;
-    bottom: 10px;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    outline: 0;
-    position: absolute;
-    width: 50px;
-  } */

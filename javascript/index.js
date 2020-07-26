@@ -1,15 +1,22 @@
 let tab=[["bonbon1", 150], ["bonbon2", 100], ["bonbon3", 150], ["bonbon4", 100], ["bonbon5", 150], ["bonbon6", 200], ["bonbon7", 150], ["bonbon8", 100], ["bonbon9", 150], ["lait",20], ["viande", 15], ["bomb2", -250], ["bomb1", -250], ["gift", 1000]];
 let score=0;
 let tabScore=[];
-var mainSong = new Audio("../sons/son1.mp3");
+var mainSong = new Audio("./sons/son1.mp3");
 mainSong.loop = true;
+// mainSong.play();
 mainSong.volume = 0.1;
 let $section1 = document.getElementById('acceuil');
 let $section2 = document.getElementById('jeux');
 let $resultat= document.querySelector('#resultat');
+
+//  get the DOM elements to play and stop sound
+
+let $sound= document.getElementById("sound");
+
 //  creation d'un chronometre
 
-const chronometer = new Chronometer()
+const chronometer = new Chronometer();
+
 // get the DOM elements that will serve us to display the time:
 
 let $secDec = document.getElementById('secDec');
@@ -87,7 +94,7 @@ function draw(){
   const $div = document.createElement('div')
   $div.className = `bonbon ${friandise[0]}`
   console.log(friandise[0]);
-  $div.style.left = `${rand(120, window.innerWidth - 190)}px`
+  $div.style.left = `${rand(250, window.innerWidth - 260)}px`
     // inject it into body
   $bar.appendChild($div);
     
@@ -110,35 +117,32 @@ function draw(){
 //            1mn d'exécution
 function erase(){
   clearInterval(int);
-  console.log(`score finale= ${score}`);
+  chronometer.stopClick();
+  j=0;
   tabScore.push(score);
-  console.log(tabScore);
   afficheResult(score)
 }
-let j;
+let j=0;
 let int;
 
 //   gerer l'affichage des éléments à fure et à mesures
 //   que le temps avance et ça arrête quand ça arrive 
 //     à 60 secondes:
-function anim(interval, j){
+function anim(){
   int= setInterval(function () {
-    let j= chronometer.getSeconds();
-    if (j === 60 ){
-      console.log(` nombre des secondes :${chronometer.getSeconds}`)
-      chronometer.stopClick();
+    if (j === 59 ){
       erase();
       mainSong.pause();
       $startGame.innerText = "Start Game";
       $startGame.className= 'start';
-      chronometer.resetClick();
     }
     else {
+      j++;
       for (let i=0; i< j/5 ; i++){
           draw()
       }
     }
-  }, interval)
+  }, 1000)
 }
 
 //  gerer le clic sur le bouton et le bascule 
@@ -148,7 +152,6 @@ $startGame.addEventListener("click", () => {
     $section1.style.display="none";
     $section2.style.display="block";
     $startGame.innerText="Start Game";
-    console.log($startGame.innerText)
   }else if(getComputedStyle($section2).display === "block" && $startGame.innerText==="Start Game"){        
     $resultat.style.display= "none"; 
     mainSong.load();
@@ -158,13 +161,29 @@ $startGame.addEventListener("click", () => {
     score=0;
     updateScore(score);
     chronometer.startClick(printTime);
-    anim(1000, j)
+    anim()
   }else {
-    chronometer.stopClick();
-    chronometer.resetClick();
     mainSong.pause();
     erase();
     $startGame.innerText = "Start Game";
     $startGame.className= 'start';
     } 
 } )
+
+// sound On sound Off
+
+$sound.addEventListener("click", () => {
+  if (mainSong.play){
+    mainSong.pause();
+    console.log(`de On à OFF ${$sound.classList}`);
+    $sound.className.remove("soundOn");
+    $sound.className.add("soundOff");
+    console.log(`de On à OFF ${$sound.classList}`); 
+  }
+  else {
+    mainSong.play();
+    console.log(`de Off à On ${$sound.classList}`);
+    $sound.className.remove("soundOff");
+    $sound.className.add("soundOn");
+    console.log(`de Off à On ${$sound.classList}`); 
+}})
