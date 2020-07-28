@@ -2,9 +2,12 @@ let tab=[["bonbon1", 150], ["bonbon2", 100], ["bonbon3", 150], ["bonbon4", 100],
 let score=0;
 let tabScore=[];
 var mainSong = new Audio("./sons/son1.mp3");
+var biip = new Audio("./sons/biip.mp3");
+var biip1= new Audio("./sons/biip1.mp3");
 mainSong.loop = true;
-// mainSong.play();
 mainSong.volume = 0.1;
+biip.volume= 1;
+biip1.volume=1;
 let $section1 = document.getElementById('acceuil');
 let $section2 = document.getElementById('jeux');
 let $resultat= document.querySelector('#resultat');
@@ -24,25 +27,24 @@ let $secUni = document.getElementById('secUni');
 let $milDec = document.getElementById('milDec');
 let $milUni = document.getElementById('milUni');
 
+//  afficher le chrono
 function printTime() {
   printMilliseconds();
   printSeconds()
 }
 
-
+//  afficher les secondes
 function printSeconds() {
   let second = chronometer.twoDigitsNumber(chronometer.getSeconds());
-  $secDec.innerHTML = second[0]
+  $secDec.innerHTML = second[0];
   $secUni.innerHTML = second[1]
-  // return `${this.$secDec}${this.secUni}`
 
 }
 
-// ==> BONUS
+// afficher les milliscondes
 function printMilliseconds() {
-  // ... your code goes here
   let milSec = chronometer.twoDigitsNumber(chronometer.getMilliSecend());
-  $milDec.innerHTML = milSec[0]
+  $milDec.innerHTML = milSec[0];
   $milUni.innerHTML = milSec[1]
 }
 
@@ -84,7 +86,8 @@ function updateScore(num){
   $score.innerText= num
 }
 const $bar= document.querySelector('#game');
-let i = 1;
+let j=0;
+let int;
 
 //   affichages des mes élements dans ma div et 
 //    les faire disparaitre en cliquant dessus:
@@ -100,7 +103,12 @@ function draw(){
     
     // bind click event
   $div.onclick = function () {
-    if(i< 60){
+    if(j< 60){
+      if( friandise[0]=== "bomb1" || friandise[0]=== "bomb2"){
+        biip.play()
+      }else {
+        biip1.play()
+      }
       $bar.removeChild($div);
       let nbr= friandise[1];
       score += nbr;
@@ -122,8 +130,6 @@ function erase(){
   tabScore.push(score);
   afficheResult(score)
 }
-let j=0;
-let int;
 
 //   gerer l'affichage des éléments à fure et à mesures
 //   que le temps avance et ça arrête quand ça arrive 
